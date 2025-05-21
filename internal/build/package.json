@@ -25,8 +25,6 @@
     "vue-macros": "3.0.0-beta.10"
   },
   "devDependencies": {
-    "@pnpm/types": "^1000.6.0",
-    "@types/gulp": "^4.0.17",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.4",
     "unbuild": "^3.5.0",
