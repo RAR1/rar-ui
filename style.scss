@@ -1,0 +1,22 @@
+@mixin setColor($name, $value) {
+    --#{$name}: #{$value};
+    @debug "Setting color: --#{$name}: #{$value}";
+}
+
+:root {
+    @include setColor(bgColor, blue);
+}
+
+.box {
+    @include setColor(bgColor2, red);
+    width: 100px;
+    height: 100px;
+    background-color: var(--bgColor2);
+    color: white;
+    text-align: center;
+    line-height: 100px;
+
+    &:hover {
+        background-color: yellow
+    }
+}

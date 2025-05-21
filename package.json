@@ -1,0 +1,33 @@
+{
+  "name": "uitest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "exec node scripts/test.js",
+    "con": "pnpm run -r --parallel test",
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/gulp": "^4.0.9",
+    "@types/node": "^22.15.19",
+    "eslint": "^8.57.1",
+    "eslint-define-config": "^2.1.0",
+    "gulp": "^5.0.0",
+    "prettier": "^3.5.3",
+    "sass": "^1.87.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vue": "^3.5.13",
+    "vue-macros": "3.0.0-beta.10",
+    "vue-tsc": "^2.2.10"
+  },
+  "dependencies": {
+    "@test-ui/build": "workspace:*",
+    "@test-ui/components": "workspace:*"
+  }
+}
