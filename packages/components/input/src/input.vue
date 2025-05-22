@@ -1,11 +1,8 @@
 <template>
-   <div :class="{ isDisabled: disabled }">这是button</div>
+   <input type="text">
 </template>
 
 <script lang="ts" setup>
-const { disabled = false } = defineProps<{
-   disabled: Boolean
-}>()
 </script>
 
 <style lang="scss" scoped>

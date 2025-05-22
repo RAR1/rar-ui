@@ -1,5 +1,5 @@
 {
-  "name": "@ui-test/build-utils",
+  "name": "@test-ui/build-utils",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.cjs",
