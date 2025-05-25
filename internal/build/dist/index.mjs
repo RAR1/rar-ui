@@ -6,7 +6,12 @@ import glob from 'fast-glob';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
-import { testRoot, compRoot } from '@ui-test/build-utils';
+
+const projRoot = resolve(__dirname, "..", "..", "..");
+const pkgRoot = resolve(projRoot, "packages");
+const compRoot = resolve(pkgRoot, "components");
+resolve(pkgRoot, "test-ui");
+const testRoot = resolve(projRoot, "dist", "test-ui");
 
 const outputOptions = [
   {

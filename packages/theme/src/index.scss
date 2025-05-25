@@ -1,3 +1,2 @@
-:root {
-    --bg-color: blue;
-}
+@use './base.scss';
+@use './button.scss';

@@ -1,3 +1,4 @@
-:root {
-  --bg-color: blue;
+.button {
+  background-color: #409eff;
+  color: #ffffff;
 }

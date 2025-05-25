@@ -1,7 +1,6 @@
-@use 'utils' as *;
+@use 'common/var' as *;
 
 .button {
-    color: white;
-    background-color: $btn-bg2;
-    width: 100px;
+    background-color: $color-primary;
+    color: $color-white;
 }

@@ -8,7 +8,6 @@ const glob = require('fast-glob');
 const pluginNodeResolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const esbuild = require('rollup-plugin-esbuild');
-const buildUtils = require('@ui-test/build-utils');
 
 function _interopDefaultCompat (e) { return e && typeof e === 'object' && 'default' in e ? e.default : e; }
 
@@ -18,9 +17,15 @@ const glob__default = /*#__PURE__*/_interopDefaultCompat(glob);
 const commonjs__default = /*#__PURE__*/_interopDefaultCompat(commonjs);
 const esbuild__default = /*#__PURE__*/_interopDefaultCompat(esbuild);
 
+const projRoot = path.resolve(__dirname, "..", "..", "..");
+const pkgRoot = path.resolve(projRoot, "packages");
+const compRoot = path.resolve(pkgRoot, "components");
+path.resolve(pkgRoot, "test-ui");
+const testRoot = path.resolve(projRoot, "dist", "test-ui");
+
 const outputOptions = [
   {
-    dir: path.resolve(buildUtils.testRoot, "es"),
+    dir: path.resolve(testRoot, "es"),
     entryFileNames: `[name].mjs`,
     exports: void 0,
     format: "esm",
@@ -28,7 +33,7 @@ const outputOptions = [
     sourcemap: false
   },
   {
-    dir: path.resolve(buildUtils.testRoot, "lib"),
+    dir: path.resolve(testRoot, "lib"),
     entryFileNames: `[name].js`,
     exports: void 0,
     format: "cjs",
@@ -38,7 +43,7 @@ const outputOptions = [
 ];
 const build = async () => {
   const input = await glob__default("**/*.{js,ts,vue}", {
-    cwd: buildUtils.compRoot,
+    cwd: compRoot,
     absolute: true,
     onlyFiles: true
   });
