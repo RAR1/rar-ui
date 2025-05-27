@@ -5,3 +5,4 @@ export const pkgRoot = resolve(projRoot, 'packages');
 export const compRoot = resolve(pkgRoot, 'components');
 export const ttRoot = resolve(pkgRoot, 'test-ui');
 export const testRoot = resolve(projRoot, 'dist', 'test-ui');
+export const buildRoot = resolve(projRoot, 'internal', 'build');

@@ -16,7 +16,6 @@
     "@pnpm/find-workspace-packages": "^6.0.9",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "@test-ui/build-utils": "workspace:*",
     "@vitejs/plugin-vue": "^5.2.4",
     "fast-glob": "^3.3.3",
     "gulp": "^4.0.2",

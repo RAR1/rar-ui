@@ -6,14 +6,14 @@ import glob from 'fast-glob'
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
-import { compRoot, testRoot } from "@ui-test/build-utils";
+import { compRoot, testRoot } from "@test-ui/build-utils";
 import type { OutputOptions } from "rollup";
 
 const outputOptions: OutputOptions[] = [
   {
     dir: resolve(testRoot, "es"),
     entryFileNames: `[name].mjs`,
-    exports: undefined,
+    exports: 'named',
     format: "esm",
     preserveModules: true,
     sourcemap: false,
@@ -28,7 +28,7 @@ const outputOptions: OutputOptions[] = [
   },
 ];
 
-const build = async () => {
+const buildModules = async () => {
     const input = await glob('**/*.{js,ts,vue}', {
         cwd: compRoot,
         absolute: true,
@@ -74,11 +74,6 @@ const build = async () => {
     }
 }
 
-const test = async () => {
-  console.log('test')
-}
-
 export {
-    build,
-    test
+    buildModules,
 };
