@@ -5,6 +5,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "private": true,
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -20,5 +21,8 @@
   "license": "ISC",
   "devDependencies": {
     "unbuild": "^3.5.0"
+  },
+  "dependencies": {
+    "@pnpm/find-workspace-packages": "^6.0.9"
   }
 }

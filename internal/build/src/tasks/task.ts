@@ -1,4 +1,5 @@
 import { rollup } from "rollup";
+import { series } from "gulp";
 import { resolve } from "path";
 import Vue from '@vitejs/plugin-vue'
 import VueMacros from 'vue-macros/vite'
@@ -7,7 +8,9 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
 import { compRoot, testRoot } from "@test-ui/build-utils";
+import { withTaskName, writeBundles } from '../utils'
 import type { OutputOptions } from "rollup";
+import type { TaskFunction } from 'gulp'
 
 const outputOptions: OutputOptions[] = [
   {
@@ -21,20 +24,19 @@ const outputOptions: OutputOptions[] = [
   {
     dir: resolve(testRoot, "lib"),
     entryFileNames: `[name].js`,
-    exports: undefined,
+    exports: 'named',
     format: "cjs",
     preserveModules: true,
     sourcemap: false,
   },
 ];
 
-const buildModules = async () => {
+async function buildModulesComponents() {
     const input = await glob('**/*.{js,ts,vue}', {
         cwd: compRoot,
         absolute: true,
         onlyFiles: true
     })
-    console.log('input', input)
     const bundle = await rollup({
       input: input,
       plugins: [
@@ -66,14 +68,10 @@ const buildModules = async () => {
         })
       ],
     });
-    for(let option of outputOptions) {
-        await bundle.write(option);
-    }
-    if(bundle) {
-        await bundle.close();
-    }
+
+    await writeBundles(bundle, outputOptions);
 }
 
-export {
-    buildModules,
-};
+export const buildModules: TaskFunction = series(
+  withTaskName('buildModulesComponents', buildModulesComponents)
+) 

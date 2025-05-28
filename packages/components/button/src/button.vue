@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 const { disabled = false } = defineProps<{
-   disabled?: Boolean
+   disabled?: Boolean,
 }>()
 </script>
 
