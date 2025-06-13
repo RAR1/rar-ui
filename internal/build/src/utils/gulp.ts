@@ -1,4 +1,4 @@
-import { buildRoot } from '@test-ui/build-utils'
+import { buildRoot } from '@rar-ui/build-utils'
 import { run } from './process';
 
 import type { TaskFunction } from 'gulp';

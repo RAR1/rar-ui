@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { testRoot } from '@test-ui/build-utils'
+import { rarOutput } from '@rar-ui/build-utils'
 
 export default defineConfig({
   plugins: [vue()],

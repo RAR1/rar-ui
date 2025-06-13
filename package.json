@@ -1,8 +1,9 @@
 {
-  "name": "uitest",
+  "name": "rar-ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "pnpm -C play dev",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
@@ -34,8 +35,6 @@
     "vue-tsc": "^2.2.10"
   },
   "dependencies": {
-    "@test-ui/build": "workspace:*",
-    "@test-ui/build-utils": "workspace:*",
-    "@test-ui/components": "workspace:*"
+    "@rar-ui/build-utils": "workspace:*"
   }
 }

@@ -4,8 +4,8 @@
 </template>
 
 <script setup>
-import { ElButton, ElInput } from '@test-ui/components'
-// import { ElButton, ElInput } from './assets/test-ui'
+// import { ElButton, ElInput } from '@rar-ui/components'
+import { ElButton, ElInput } from '../../dist/rar-ui'
 </script>
 
 <style></style>

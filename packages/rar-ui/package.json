@@ -1,10 +1,10 @@
 {
-  "name": "test-ui",
+  "name": "rar-ui",
   "version": "0.0.0-dev.1",
   "description": "A Test UI for Vue 3",
   "keywords": [
-    "test-ui",
-    "test",
+    "rar-ui",
+    "rar",
     "vue",
     "ui"
   ],

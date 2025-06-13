@@ -1,4 +1,4 @@
-import { epPackage, getPackageDependencies } from '@test-ui/build-utils';
+import { epPackage, getPackageDependencies } from '@rar-ui/build-utils';
 import type { RollupBuild, OutputOptions } from 'rollup';
 
 export const generateExternal = async (options: { full: boolean }) => {

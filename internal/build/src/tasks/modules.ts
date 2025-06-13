@@ -7,7 +7,7 @@ import glob from "fast-glob";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import esbuild from "rollup-plugin-esbuild";
-import { pkgRoot, testRoot, ttRoot, excludeFiles } from "@test-ui/build-utils";
+import { pkgRoot, rarOutput, rarRoot, excludeFiles } from "@rar-ui/build-utils";
 import { generateExternal, withTaskName, writeBundles } from "../utils";
 import type { OutputOptions } from "rollup";
 import type { TaskFunction } from "gulp";
@@ -15,20 +15,20 @@ import type { TaskFunction } from "gulp";
 const outputOptions: OutputOptions[] = [
   {
     format: "esm",
-    dir: resolve(testRoot, "es"),
+    dir: resolve(rarOutput, "es"),
     entryFileNames: `[name].mjs`,
     exports: undefined,
     preserveModules: true,
-    preserveModulesRoot: ttRoot,
+    preserveModulesRoot: rarRoot,
     sourcemap: false,
   },
   {
     format: "cjs",
-    dir: resolve(testRoot, "lib"),
+    dir: resolve(rarOutput, "lib"),
     entryFileNames: `[name].js`,
     exports: "named",
     preserveModules: true,
-    preserveModulesRoot: ttRoot,
+    preserveModulesRoot: rarRoot,
     sourcemap: false,
   },
 ];

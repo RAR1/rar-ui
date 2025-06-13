@@ -4,10 +4,10 @@ import gulpSass from 'gulp-sass'
 import dartSass from 'sass'
 import autoprefixer from 'gulp-autoprefixer'
 import rename from 'gulp-rename'
-import { testRoot } from '@test-ui/build-utils'
+import { rarOutput } from '@rar-ui/build-utils'
 
 const distFolder = resolve(__dirname, 'dist');
-const distBundle = resolve(testRoot, 'theme');
+const distBundle = resolve(rarOutput, 'theme');
 
 function buildThemeChalk() {
     const sass = gulpSass(dartSass);
