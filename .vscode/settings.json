@@ -1,10 +1,37 @@
 {
-    // "git.ignoreLimitWarning": true,
-    "npm.packageManager": "pnpm",
-    "explorer.fileNesting.enabled": true,
-    "explorer.fileNesting.patterns": {
-        "tsconfig.json": "tsconfig.*.json",
-        "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml"
-    },
-    "Codegeex.RepoIndex": true
+  // "git.ignoreLimitWarning": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "npm.packageManager": "pnpm",
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "json",
+    "jsonc"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "json",
+    "jsonc"
+  ],
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml"
+  },
+  "Codegeex.RepoIndex": true
 }
