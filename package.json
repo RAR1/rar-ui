@@ -1,20 +1,25 @@
 {
   "name": "rar-ui",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "private": true,
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
   "scripts": {
     "dev": "pnpm -C play dev",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
-    "build": "pnpm run -C internal/build start"
+    "build": "pnpm run -C internal/build start",
+    "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "@rar-ui/build-utils": "workspace:*"
+  },
   "devDependencies": {
     "@pnpm/types": "^1000.6.0",
+    "@rar-ui/eslint-config": "workspace:*",
     "@types/gulp": "^4.0.17",
     "@types/node": "^22.15.19",
     "chalk": "^5.4.1",
@@ -24,6 +29,8 @@
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-define-config": "^2.1.0",
     "gulp": "4.0.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "sass": "^1.87.0",
@@ -34,7 +41,10 @@
     "vue-macros": "3.0.0-beta.10",
     "vue-tsc": "^2.2.10"
   },
-  "dependencies": {
-    "@rar-ui/build-utils": "workspace:*"
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,md,json}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
