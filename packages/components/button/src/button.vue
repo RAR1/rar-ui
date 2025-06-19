@@ -6,8 +6,6 @@
 const { disabled = false } = defineProps<{
   disabled?: boolean
 }>()
-const a = 1
-console.log(a)
 </script>
 
 <style lang="scss" scoped></style>
