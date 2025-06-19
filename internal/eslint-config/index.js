@@ -1,7 +1,6 @@
-// const { defineConfig } = require('eslint-define-config')
-// import { defineConfig } from 'eslint-define-config'
+const { defineConfig } = require('eslint-define-config')
 
-module.exports = {
+module.exports = defineConfig({
   env: {
     es6: true,
     browser: true,
@@ -13,7 +12,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:eslint-comments/recommended',
     'plugin:jsonc/recommended-with-jsonc',
-    // 'plugin:markdown/recommended',
+    'plugin:markdown/recommended',
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     // 'prettier',
@@ -323,4 +322,4 @@ module.exports = {
     'unicorn/prefer-type-error': 'error',
     'unicorn/throw-new-error': 'error',
   },
-}
+})
