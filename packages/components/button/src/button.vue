@@ -1,13 +1,11 @@
 <template>
-   <div :class="{ isDisabled: disabled }">这是button</div>
+  <div :class="{ isDisabled: disabled }">这是button</div>
 </template>
 
 <script lang="ts" setup>
 const { disabled = false } = defineProps<{
-   disabled?: Boolean,
+  disabled?: boolean
 }>()
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
