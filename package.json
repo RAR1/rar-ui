@@ -8,6 +8,7 @@
   "author": "",
   "main": "index.js",
   "scripts": {
+    "cz": "czg",
     "dev": "pnpm -C play dev",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
@@ -18,12 +19,15 @@
     "@rar-ui/build-utils": "workspace:*"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@pnpm/types": "^1000.6.0",
     "@rar-ui/eslint-config": "workspace:*",
     "@types/gulp": "^4.0.17",
     "@types/node": "^22.15.19",
     "chalk": "^5.4.1",
     "consola": "^3.4.2",
+    "czg": "^1.11.1",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
