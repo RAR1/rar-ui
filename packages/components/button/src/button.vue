@@ -2,7 +2,7 @@
   <div :class="{ isDisabled: disabled }">这是button</div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="RarButton">
 const { disabled = false } = defineProps<{
   disabled?: boolean
 }>()
