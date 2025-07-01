@@ -71,7 +71,12 @@ export const buildProp = <
   return epProp
 }
 export const buildProps = <
-  Props extends Record<string, { [epPropKey]: true | NativePropType }>,
+  Props extends Record<
+    string,
+    | { [epPropKey]: true }
+    | NativePropType
+    | EpPropInput<any, any, any, any, any>
+  >,
 >(
   props: Props,
 ): {

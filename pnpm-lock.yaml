@@ -11,6 +11,9 @@ importers:
       '@rar-ui/build-utils':
         specifier: workspace:*
         version: link:internal/build-utils
+      '@rar-ui/hooks':
+        specifier: workspace:*
+        version: link:packages/hooks
       '@rar-ui/utils':
         specifier: workspace:*
         version: link:packages/utils
@@ -206,6 +209,8 @@ importers:
         version: 8.57.1
 
   packages/components: {}
+
+  packages/hooks: {}
 
   packages/rar-ui: {}
 
@@ -10576,7 +10581,7 @@ snapshots:
       fdir: 6.4.4(picomatch@4.0.2)
       picomatch: 4.0.2
       postcss: 8.5.3
-      rollup: 4.43.0
+      rollup: 4.40.2
       tinyglobby: 0.2.13
     optionalDependencies:
       '@types/node': 24.0.1

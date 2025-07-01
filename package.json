@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@rar-ui/build-utils": "workspace:*",
+    "@rar-ui/hooks": "workspace:*",
     "@rar-ui/utils": "workspace:*",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
