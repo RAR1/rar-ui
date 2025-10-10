@@ -1,5 +1,9 @@
 <template>
-  <component :is="tag" :ref="_ref" :class="buttonKls" @click="handleClick" />
+  <component :is="tag" :ref="_ref" :class="buttonKls" @click="handleClick">
+    <span v-if="$slots.default">
+      <slot />
+    </span>
+  </component>
 </template>
 
 <script lang="ts" setup name="RarButton">
