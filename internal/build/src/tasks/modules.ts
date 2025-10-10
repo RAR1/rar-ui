@@ -1,21 +1,21 @@
-import { rollup } from "rollup";
-import { series } from "gulp";
-import { resolve } from "path";
-import Vue from "@vitejs/plugin-vue";
-import VueMacros from "vue-macros/vite";
-import glob from "fast-glob";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import esbuild from "rollup-plugin-esbuild";
-import { pkgRoot, rarOutput, rarRoot, excludeFiles } from "@rar-ui/build-utils";
-import { generateExternal, withTaskName, writeBundles } from "../utils";
-import type { OutputOptions } from "rollup";
-import type { TaskFunction } from "gulp";
+import { resolve } from 'path'
+import { rollup } from 'rollup'
+import { series } from 'gulp'
+import Vue from '@vitejs/plugin-vue'
+import VueMacros from 'vue-macros/vite'
+import glob from 'fast-glob'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import esbuild from 'rollup-plugin-esbuild'
+import { excludeFiles, pkgRoot, rarOutput, rarRoot } from '@rar-ui/build-utils'
+import { generateExternal, withTaskName, writeBundles } from '../utils'
+import type { OutputOptions } from 'rollup'
+import type { TaskFunction } from 'gulp'
 
 const outputOptions: OutputOptions[] = [
   {
-    format: "esm",
-    dir: resolve(rarOutput, "es"),
+    format: 'esm',
+    dir: resolve(rarOutput, 'es'),
     entryFileNames: `[name].mjs`,
     exports: undefined,
     preserveModules: true,
@@ -23,24 +23,26 @@ const outputOptions: OutputOptions[] = [
     sourcemap: false,
   },
   {
-    format: "cjs",
-    dir: resolve(rarOutput, "lib"),
+    format: 'cjs',
+    dir: resolve(rarOutput, 'lib'),
     entryFileNames: `[name].js`,
-    exports: "named",
+    exports: 'named',
     preserveModules: true,
     preserveModulesRoot: rarRoot,
     sourcemap: false,
   },
-];
+]
 
 async function buildModulesComponents() {
-  const input = excludeFiles(await glob("**/*.{js,ts,vue}", {
-    cwd: pkgRoot,
-    absolute: true,
-    onlyFiles: true,
-  }));
+  const input = excludeFiles(
+    await glob('**/*.{js,ts,vue}', {
+      cwd: pkgRoot,
+      absolute: true,
+      onlyFiles: true,
+    }),
+  )
   const bundle = await rollup({
-    input: input,
+    input,
     plugins: [
       VueMacros({
         setupComponent: false,
@@ -58,24 +60,24 @@ async function buildModulesComponents() {
         },
       }),
       nodeResolve({
-        extensions: [".mjs", ".js", ".json", ".ts"],
+        extensions: ['.mjs', '.js', '.json', '.ts'],
       }),
       commonjs(),
       esbuild({
-        target: "es2018",
+        target: 'es2018',
         sourceMap: true,
         loaders: {
-          ".vue": "ts",
+          '.vue': 'ts',
         },
       }),
     ],
-    external: await generateExternal({ full: false}),
+    external: await generateExternal({ full: false }),
     treeshake: { moduleSideEffects: false },
-  });
+  })
 
-  await writeBundles(bundle, outputOptions);
+  await writeBundles(bundle, outputOptions)
 }
 
 export const buildModules: TaskFunction = series(
-  withTaskName("buildModulesComponents", buildModulesComponents)
-);
+  withTaskName('buildModulesComponents', buildModulesComponents),
+)
