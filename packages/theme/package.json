@@ -2,15 +2,15 @@
   "name": "@rar-ui/theme",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
     "build": "gulp --require tsx/dist/loader.cjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/gulp-autoprefixer": "^0.0.37",
     "@types/gulp-rename": "^2.0.6",
