@@ -1,0 +1,7 @@
+@use 'common/var' as *;
+@use 'mixins/mixins' as *;
+
+:root {
+    @include set-css-var-value('font-weight-primary', 500);
+    @include set-css-var-value('font-line-height-primary', 24px);
+}

@@ -1,6 +1,30 @@
-@use 'common/var' as *;
+@use 'sass:map';
 
-.button {
-    background-color: $color-primary;
-    color: $color-white;
+@use 'common/var' as *;
+@use 'mixins/mixins' as *;
+
+$button-icon-span-gap: () !default;
+$button-icon-span-gap: map.merge(
+    (
+        'large': 8px,
+        'default': 6px,
+        'snall': 4px,
+    ),
+    $button-icon-span-gap
+);
+
+@include b('button') {
+    @include set-component-css-var('button', $button);
+}
+
+@include b('button') {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    line-height: 1;
+    height: map.get($input-height, 'default');
+    white-space: nowrap;
+    cursor: pointer;
+    color: getCssVar('button', 'text-color');
 }

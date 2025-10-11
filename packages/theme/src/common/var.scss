@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use '../mixins/function.scss' as *;
 
 $types: primary, success, warning, danger, error, info;
 
@@ -37,3 +38,27 @@ $color-warning: map.get($colors, 'warning', 'base') !default;
 $color-danger: map.get($colors, 'danger', 'base') !default;
 $color-error: map.get($colors, 'error', 'base') !default;
 $color-info: map.get($colors, 'info', 'base') !default;
+
+$common-component-size: () !default;
+$common-component-size: map.merge(
+  (
+    'large': 40px,
+    'default': 32px,
+    'small':  24px,
+  ),
+  $common-component-size
+);
+
+$input-height: () !default;
+$input-height: map.merge($common-component-size, $input-height);
+
+// Button
+$button: () !default;
+$button: map.merge(
+  (
+    'font-weight': getCssVar('font-weight-primary'),
+    'border-color': getCssVar('border-color'),
+    'text-color': getCssVar('text-color', 'regular'),
+  ),
+  $button
+);

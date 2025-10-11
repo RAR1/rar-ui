@@ -1,0 +1,15 @@
+@use 'config' as *;
+@forward 'config';
+@forward '_var';
+@forward 'function';
+@use 'sass:map';
+
+$B: null;
+
+@mixin b($block) {
+    $B: $namespace + $common-separator + $block !global;
+
+    .#{$B} {
+        @content;
+    }
+}

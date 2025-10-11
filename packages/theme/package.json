@@ -6,7 +6,8 @@
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "main": "index.js",
+  "main": "./src/index.scss",
+  "style": "./src/index.scss",
   "scripts": {
     "clean": "rimraf dist",
     "build": "gulp --require tsx/dist/loader.cjs"
