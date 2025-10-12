@@ -14,6 +14,9 @@ importers:
       '@rar-ui/hooks':
         specifier: workspace:*
         version: link:packages/hooks
+      '@rar-ui/theme':
+        specifier: workspace:*
+        version: link:packages/theme
       '@rar-ui/utils':
         specifier: workspace:*
         version: link:packages/utils
