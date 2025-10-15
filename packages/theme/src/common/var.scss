@@ -1,4 +1,7 @@
+@use 'sass:math';
 @use 'sass:map';
+@use 'sass:color';
+
 @use '../mixins/function.scss' as *;
 
 $types: primary, success, warning, danger, error, info;
@@ -39,6 +42,32 @@ $color-danger: map.get($colors, 'danger', 'base') !default;
 $color-error: map.get($colors, 'error', 'base') !default;
 $color-info: map.get($colors, 'info', 'base') !default;
 
+@mixin set-color-mix-level(
+  $type,
+  $number,
+  $mode: 'light',
+  $mix-color: $color-white
+) {
+  $colors: map.deep-merge(
+    (
+      $type: (
+        '#{$mode}-#{$number}': color.mix($mix-color, map.get($colors, $type, 'base'), math.percentage(math.div($number, 10)))
+      ),
+    ),
+    $colors
+  ) !global;
+}
+
+@each $type in $types {
+  @for $i from 1 through 9 {
+    @include set-color-mix-level($type, $i, 'light', $color-white);
+  }
+}
+
+@each $type in $types {
+  @include set-color-mix-level($type, 2, 'dark', $color-black);
+}
+
 $common-component-size: () !default;
 $common-component-size: map.merge(
   (
@@ -59,6 +88,115 @@ $button: map.merge(
     'font-weight': getCssVar('font-weight-primary'),
     'border-color': getCssVar('border-color'),
     'text-color': getCssVar('text-color', 'regular'),
+    'disabled-text-color': getCssVar('disabled-text-color'),
+    'disabled-bg-color': getCssVar('fill-color', 'blank'),
+    'disabled-border-color': getCssVar('border-color-light'),
+    'divide-border-color': rgba($color-white, 0.5),
+    'hover-text-color': getCssVar('color-primary'),
+    'hover-bg-color': getCssVar('color-primary', 'light-9'),
+    'hover-border-color': getCssVar('color-primary-light-7'),
+    'active-text-color': getCssVar('button-hover-text-color'),
+    'active-border-color': getCssVar('color-primary'),
+    'active-bg-color': getCssVar('button', 'hover-bg-color'),
+    'outline-color': getCssVar('color-primary', 'light-5'),
+    'hover-link-text-color': getCssVar('text-color', 'secondary'),
+    'active-color': getCssVar('text-color', 'primary'),
   ),
   $button
 );
+
+$font-family: () !default;
+$font-family: map.merge(
+  (
+    '':
+    "'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif"
+  ),
+  $font-family
+);
+
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    'extra-large': 20px,
+    'large': 18px,
+    'medium': 16px,
+    'base': 14px,
+    'small': 13px,
+    'extra-small': 12px,
+  ),
+  $font-size
+);
+
+$z-index: () !default;
+$z-index: map.merge(
+  (
+    'normal': 1,
+    'top': 1000,
+    'popper': 2000,
+  ),
+  $z-index,
+);
+
+$border-radius: () !default;
+$border-radius: map.merge(
+  (
+    'base': 4px,
+    'small': 2px,
+    'round': 20px,
+    'circle': 100%,
+  ),
+  $border-radius
+);
+
+$text-color: () !default;
+$text-color: map.merge(
+  (
+    'primary': #303133,
+    'regular': #606266,
+    'secondary': #909399,
+    'placeholder': #a9abb2,
+    'disabled': #c0c4cc
+  ),
+  $text-color
+);
+
+$bg-color: () !default;
+$bg-color: map.merge(
+  (
+    '': #ffffff,
+    'page': #f2f3f5,
+    'overlay': #ffffff,
+  ),
+  $bg-color
+);
+
+$border-color: () !default;
+$border-color: map.merge(
+  (
+    '': #dcdfe6,
+    'light': #e4e7ed,
+    'lighter': #ebeef5,
+    'extra-light': #f2f6fc,
+    'dark': #d4d7de,
+    'darker': #cdd0d6,
+  ),
+  $border-color
+);
+
+$fill-color: () !default;
+$fill-color: map.merge(
+  (
+    '': #f0f2f5,
+    'light': #f5f7fa,
+    'lighter': #fafafa,
+    'extra-light': #fafcff,
+    'dark': #ebedf0,
+    'darker': #e6e8eb,
+    'blank': #ffffff,
+  ),
+  $fill-color
+);
+
+$border-width: 1px !default;
+$border-style: solid !default;
+$border-color-hover: getCssVar('text-color', 'disabled') !default;
